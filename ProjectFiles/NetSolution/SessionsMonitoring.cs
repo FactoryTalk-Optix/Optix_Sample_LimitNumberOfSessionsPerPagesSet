@@ -53,7 +53,7 @@ public class SessionsMonitoring : BaseNetLogic
         }
 
         // Check if any counter is bigger than the set limit
-        if (mainSessions > LogicObject.GetVariable("MaxNumberOfMainSessions").Value)
+        if (mainSessions >= LogicObject.GetVariable("MaxNumberOfMainSessions").Value)
         {
             Owner.Get<Button>("Main").Enabled = false;
             Log.Info($"Main sessions limit exceeded: {mainSessions} active sessions, limit is {LogicObject.GetVariable("MaxNumberOfMainSessions").Value}");
@@ -63,7 +63,7 @@ public class SessionsMonitoring : BaseNetLogic
             Owner.Get<Button>("Main").Enabled = true;
         }
 
-        if (subSessions > LogicObject.GetVariable("MaxNumberOfSubSessions").Value)
+        if (subSessions >= LogicObject.GetVariable("MaxNumberOfSubSessions").Value)
         {
             Owner.Get<Button>("Sub").Enabled = false;
             Log.Info($"Sub sessions limit exceeded: {subSessions} active sessions, limit is {LogicObject.GetVariable("MaxNumberOfSubSessions").Value}");
